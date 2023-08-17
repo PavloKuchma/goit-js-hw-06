@@ -1,18 +1,12 @@
 const ulCat = document.querySelector("#categories");
-const itemCat = document.querySelector(".item");
-// console.dir(ulCat);
+const itemCat = document.querySelectorAll(".item");
 
-function consoleResult(selector) {
-  const catNumber = selector.children.length;
-  const selectorArray = selector.children;
-  console.log(selectorArray);
-  selectorArray.forEach((element) => {
-    console.log(element);
-    // const msg = `Category: ${element.length} \n Elements: ${element.length}`;
-    // return msg;
-  });
-  // return console.log(`Number of categories: ${catNumber}`);
-}
-
-consoleResult(ulCat);
-// console.log(consoleResult(ulCat));
+const title = ulCat.children.length;
+console.log(`Number of categories: ${title}`);
+itemCat.forEach((itemCat) => {
+  const elCat = itemCat.firstElementChild.textContent;
+  const childOfCategory = itemCat.lastElementChild;
+  console.log(
+    `Category: ${elCat}\nElements: ${childOfCategory.children.length}`
+  );
+});
