@@ -4,7 +4,7 @@ const symInput = document.querySelector("#validation-input");
 symInput.addEventListener("blur", warningFunc);
 function warningFunc(event) {
   const characters = event.currentTarget.value;
-  if (Number(symInput.dataset.length) <= characters.trim().length) {
+  if (Number(symInput.dataset.length) === characters.trim().length) {
     symInput.classList = "valid";
   } else {
     symInput.classList = "invalid";

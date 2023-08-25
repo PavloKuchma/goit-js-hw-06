@@ -6,13 +6,14 @@ function submitFn(event) {
   const emailFill = formRef.elements.email.value;
   const passFill = formRef.elements.password.value;
 
-  if (emailFill.length === 0 || passFill.length === 0) {
+  if (emailFill.trim().length === 0 || passFill.trim().length === 0) {
     alert("All fields must be filled");
+  } else {
+    const userData = {
+      useremail: emailFill,
+      userpass: passFill,
+    };
+    console.log(userData);
+    formRef.reset();
   }
-  const userData = {
-    useremail: emailFill,
-    userpass: passFill,
-  };
-  console.log(userData);
-  formRef.reset();
 }
