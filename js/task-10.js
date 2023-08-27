@@ -5,31 +5,24 @@ function getRandomHexColor() {
 }
 const inputRef = document.querySelector("input[type='number']");
 const createBtn = document.querySelector("[data-create]");
-const destructBtn = document.querySelector("button[data-action='destroy']");
+const destructBtn = document.querySelector("[data-destroy]");
 const boxRef = document.querySelector("#boxes");
-// console.log(destructBtn);
-console.log(createBtn);
 
-inputRef.addEventListener("blur", amountLog);
-function amountLog(evt) {
-  const amount = Number(evt.currentTarget.value);
-  // inputRef.reset();
-  console.log(amount);
-  return amount;
-}
+createBtn.addEventListener("click", createBoxes);
+function createBoxes() {
+  const amount = Number(inputRef.value);
+  let dimension = 30;
 
-// createBtn.addEventListener("click", createBoxes);
-function createBoxes(amount) {
-  const hexVal = getRandomHexColor();
-  let dimension = 20;
   for (let i = 1; i <= amount; i += 1) {
-    const markup = `<div width="${dimension + 10} + 'px'" height="${
-      dimension + 10
-    } + 'px'" style="backgroundcolor: ${hexVal}, display: flex, flexwrap: wrap, justify-content: space-between"></div>`;
+    const hexVal = getRandomHexColor();
+    const markup = `<div  style="background-color: ${hexVal}; display: block; width:${dimension}px; height:${dimension}px; margin-bottom: 10px"></div>`;
+
+    boxRef.insertAdjacentHTML("beforeend", markup);
+    dimension += 10;
   }
-  boxRef.insertAdjacentHTML("afterbegin", markup);
+  inputRef.value = "";
 }
-// destructBtn.addEventListener("click", destroyBoxes);
-function destroyBoxes(evt) {
+destructBtn.addEventListener("click", destroyBoxes);
+function destroyBoxes() {
   boxRef.innerHTML = "";
 }
